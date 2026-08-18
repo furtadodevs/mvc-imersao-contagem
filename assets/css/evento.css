@@ -1,10 +1,16 @@
-
 /* =========================================
-   CADASTRO DE PRODUTOS
+   CADASTRO DE EVENTOS
    TEMA ROXO
    ========================================= */
 
+   * {
+    box-sizing: border-box;
+}
+
+
 body {
+    margin: 0;
+
     font-family: "Poppins", Arial, sans-serif;
 
     background: #f3eafa;
@@ -17,12 +23,14 @@ body {
    CONTAINER
    ========================================= */
 
-.produto-container {
+.evento-container {
+
     min-height: calc(100vh - 80px);
 
     display: flex;
 
     justify-content: center;
+
     align-items: flex-start;
 
     padding: 45px 20px 60px;
@@ -33,10 +41,11 @@ body {
    CARD
    ========================================= */
 
-.produto-card {
+.evento-card {
+
     width: 100%;
 
-    max-width: 650px;
+    max-width: 850px;
 
     background: #ffffff;
 
@@ -55,7 +64,8 @@ body {
    CABEÇALHO
    ========================================= */
 
-.produto-header {
+.evento-header {
+
     display: flex;
 
     align-items: center;
@@ -64,12 +74,13 @@ body {
 
     padding: 28px 30px;
 
-    background: linear-gradient(
-        135deg,
-        #4b1378,
-        #7027ad,
-        #8d3dcc
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #4b1378,
+            #7027ad,
+            #8d3dcc
+        );
 
     color: #ffffff;
 }
@@ -79,8 +90,10 @@ body {
    ÍCONE
    ========================================= */
 
-.produto-icon {
+.evento-icon {
+
     width: 62px;
+
     height: 62px;
 
     flex-shrink: 0;
@@ -88,6 +101,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     border-radius: 14px;
@@ -107,7 +121,8 @@ body {
    TÍTULO
    ========================================= */
 
-.produto-header h2 {
+.evento-header h2 {
+
     margin: 0 0 5px;
 
     color: #ffffff;
@@ -119,10 +134,11 @@ body {
 
 
 /* =========================================
-   DESCRIÇÃO
+   DESCRIÇÃO DO CABEÇALHO
    ========================================= */
 
-.produto-header p {
+.evento-header p {
+
     margin: 0;
 
     color: #eadcff;
@@ -135,7 +151,8 @@ body {
    FORMULÁRIO
    ========================================= */
 
-#formProduto {
+#formEvento {
+
     padding: 35px 30px 30px;
 }
 
@@ -145,6 +162,7 @@ body {
    ========================================= */
 
 .form-label {
+
     display: block;
 
     color: #35104f;
@@ -162,6 +180,7 @@ body {
    ========================================= */
 
 .input-group {
+
     display: flex;
 }
 
@@ -171,11 +190,13 @@ body {
    ========================================= */
 
 .input-group-text {
+
     min-width: 50px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     background: #f1e4fa !important;
@@ -196,7 +217,9 @@ body {
    INPUT
    ========================================= */
 
-.form-control {
+.form-control,
+.form-select {
+
     height: 48px;
 
     border: 1px solid #d9bfea;
@@ -219,12 +242,36 @@ body {
 }
 
 
+/* =========================================
+   PLACEHOLDER
+   ========================================= */
+
 .form-control::placeholder {
+
     color: #aa98b8;
 }
 
 
-.form-control:focus {
+/* =========================================
+   SELECT
+   ========================================= */
+
+.form-select {
+
+    cursor: pointer;
+
+    background-color: #ffffff;
+
+}
+
+
+/* =========================================
+   FOCUS
+   ========================================= */
+
+.form-control:focus,
+.form-select:focus {
+
     border-color: #8d3dcc;
 
     box-shadow:
@@ -235,25 +282,158 @@ body {
 
 
 /* =========================================
-   BOTÃO
+   TEXTAREA
    ========================================= */
 
-.produto-button {
+textarea.form-control {
+
+    height: 120px;
+
+    resize: vertical;
+
+    padding-top: 13px;
+}
+
+
+/* =========================================
+   TEXTAREA COM ÍCONE
+   ========================================= */
+
+.input-group-textarea {
+
+    align-items: stretch;
+}
+
+
+.textarea-icon {
+
+    align-items: flex-start;
+
+    padding-top: 14px;
+}
+
+
+/* =========================================
+   INPUT DE ARQUIVO
+   ========================================= */
+
+input[type="file"].form-control {
+
+    padding-top: 11px;
+
+    cursor: pointer;
+}
+
+
+input[type="file"].form-control::file-selector-button {
+
+    margin: -10px 12px -10px -14px;
+
+    height: 46px;
+
+    padding: 0 15px;
+
+    border: none;
+
+    border-right: 1px solid #d9bfea;
+
+    background: #f1e4fa;
+
+    color: #7027ad;
+
+    font-family: "Poppins", Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+
+.evento-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+/* =========================================
+   BOTÃO CANCELAR
+   ========================================= */
+
+.btn-cancelar {
+
     height: 50px;
+
+    padding: 0 22px;
+
+    border: 1px solid #d7c4e2 !important;
+
+    border-radius: 10px !important;
+
+    background: #ffffff !important;
+
+    color: #654b72 !important;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.btn-cancelar:hover {
+
+    background: #f7f0fb !important;
+
+    border-color: #bfa2cf !important;
+
+    color: #4d2d5c !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   BOTÃO PUBLICAR
+   ========================================= */
+
+.evento-button {
+
+    height: 50px;
+
+    padding: 0 25px;
 
     border: none !important;
 
     border-radius: 10px !important;
 
-    background: linear-gradient(
-        135deg,
-        #6420a8,
-        #8d3dcc
-    ) !important;
+    background:
+        linear-gradient(
+            135deg,
+            #6420a8,
+            #8d3dcc
+        ) !important;
 
     color: #ffffff !important;
 
-    font-size: 15px;
+    font-size: 14px;
 
     font-weight: 600;
 
@@ -267,12 +447,14 @@ body {
 }
 
 
-.produto-button:hover {
-    background: linear-gradient(
-        135deg,
-        #50158b,
-        #7025ac
-    ) !important;
+.evento-button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #50158b,
+            #7025ac
+        ) !important;
 
     transform: translateY(-2px);
 
@@ -281,7 +463,8 @@ body {
 }
 
 
-.produto-button:active {
+.evento-button:active {
+
     transform: translateY(0);
 }
 
@@ -291,6 +474,7 @@ body {
    ========================================= */
 
 #mensagem {
+
     margin: 0 30px 30px;
 
     border-radius: 10px;
@@ -303,23 +487,33 @@ body {
    VALIDAÇÃO
    ========================================= */
 
-.form-control.is-valid {
+.form-control.is-valid,
+.form-select.is-valid {
+
     border-color: #7027ad;
 }
 
 
-.form-control.is-invalid {
+.form-control.is-invalid,
+.form-select.is-invalid {
+
     border-color: #dc3545;
 }
 
 
 .valid-feedback {
+
     color: #7027ad;
+
+    font-size: 12px;
 }
 
 
 .invalid-feedback {
+
     color: #dc3545;
+
+    font-size: 12px;
 }
 
 
@@ -327,39 +521,165 @@ body {
    RESPONSIVIDADE
    ========================================= */
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
 
-    .produto-container {
-        padding: 25px 15px 40px;
+    .evento-container {
+
+        padding: 30px 15px 45px;
     }
 
-    .produto-header {
+
+    .evento-header {
+
         padding: 24px 20px;
 
         align-items: flex-start;
     }
 
-    .produto-icon {
-        width: 52px;
-        height: 52px;
 
-        font-size: 23px;
+    .evento-icon {
+
+        width: 55px;
+
+        height: 55px;
+
+        font-size: 24px;
     }
 
-    .produto-header h2 {
-        font-size: 21px;
+
+    .evento-header h2 {
+
+        font-size: 22px;
     }
 
-    .produto-header p {
-        font-size: 12px;
+
+    #formEvento {
+
+        padding: 30px 20px 25px;
     }
 
-    #formProduto {
-        padding: 28px 20px 25px;
-    }
 
     #mensagem {
+
         margin-left: 20px;
+
         margin-right: 20px;
     }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .evento-container {
+
+        padding: 25px 12px 40px;
+    }
+
+
+    .evento-card {
+
+        border-radius: 13px;
+    }
+
+
+    .evento-header {
+
+        gap: 13px;
+
+        padding: 22px 18px;
+    }
+
+
+    .evento-icon {
+
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 22px;
+
+        border-radius: 11px;
+    }
+
+
+    .evento-header h2 {
+
+        font-size: 20px;
+    }
+
+
+    .evento-header p {
+
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+
+    #formEvento {
+
+        padding: 25px 18px 22px;
+    }
+
+
+    .form-label {
+
+        font-size: 13px;
+    }
+
+
+    .form-control,
+    .form-select {
+        height: 48px;
+    
+        border: 1px solid #d9bfea;
+    
+        border-left: none;
+    
+        border-radius: 0 10px 10px 0 !important;
+    
+        color: #35104f;
+    
+        font-size: 14px;
+    
+        padding: 10px 14px;
+    
+        background-color: #ffffff;
+    
+        cursor: pointer;
+    
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    textarea.form-control {
+
+        height: 110px;
+    }
+
+
+    .evento-actions {
+
+        flex-direction: column-reverse;
+
+        width: 100%;
+    }
+
+
+    .evento-actions .btn {
+
+        width: 100%;
+    }
+
+
+    #mensagem {
+
+        margin-left: 18px;
+
+        margin-right: 18px;
+    }
+
 }

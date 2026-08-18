@@ -1,10 +1,10 @@
 // =========================================
-// PRODUTO - JQUERY
+// EVENTO - JQUERY
 // =========================================
 
 $(document).ready(function () {
 
-    console.log("produto.js carregado!");
+    console.log("evento.js carregado!");
 
     aplicarMascaras();
     validarFormulario();
@@ -18,11 +18,8 @@ $(document).ready(function () {
 
 function aplicarMascaras() {
 
-    $("#preco").mask("000.000.000,00", {
-        reverse: true
-    });
-
-    $("#quantidade").mask("000000");
+    // Telefone
+    $("#telefone").mask("(00) 00000-0000");
 
 }
 
@@ -33,12 +30,12 @@ function aplicarMascaras() {
 
 function validarFormulario() {
 
-    console.log("Validação iniciada!");
+    console.log("Validação do evento iniciada!");
 
     const mensagem = $("#mensagem");
 
 
-    $("#formProduto").validate({
+    $("#formEvento").validate({
 
         // =====================================
         // REGRAS
@@ -46,24 +43,54 @@ function validarFormulario() {
 
         rules: {
 
-            nome: {
+            titulo: {
                 required: true,
                 minlength: 3
             },
 
             categoria: {
+                required: true
+            },
+
+            descricao: {
+                required: true,
+                minlength: 10
+            },
+
+            imagem: {
+                required: true
+            },
+
+            data: {
+                required: true
+            },
+
+            horario: {
+                required: true
+            },
+
+            local: {
                 required: true,
                 minlength: 3
             },
 
-            preco: {
-                required: true
+            endereco: {
+                required: true,
+                minlength: 5
             },
 
-            quantidade: {
+            telefone: {
                 required: true,
-                digits: true,
-                min: 1
+                minlength: 14
+            },
+
+            email: {
+                required: true,
+                email: true
+            },
+
+            site: {
+                required: true
             }
 
         },
@@ -75,24 +102,54 @@ function validarFormulario() {
 
         messages: {
 
-            nome: {
-                required: "Informe o nome do produto.",
-                minlength: "O nome deve ter pelo menos 3 caracteres."
+            titulo: {
+                required: "Informe o título do evento.",
+                minlength: "O título deve ter pelo menos 3 caracteres."
             },
 
             categoria: {
-                required: "Informe a categoria do produto.",
-                minlength: "A categoria deve ter pelo menos 3 caracteres."
+                required: "Selecione uma categoria."
             },
 
-            preco: {
-                required: "Informe o preço do produto."
+            descricao: {
+                required: "Digite uma descrição para o evento.",
+                minlength: "A descrição deve ter pelo menos 10 caracteres."
             },
 
-            quantidade: {
-                required: "Informe a quantidade.",
-                digits: "Digite somente números inteiros.",
-                min: "A quantidade deve ser maior ou igual a 1."
+            imagem: {
+                required: "Selecione uma imagem de capa."
+            },
+
+            data: {
+                required: "Informe a data do evento."
+            },
+
+            horario: {
+                required: "Informe o horário do evento."
+            },
+
+            local: {
+                required: "Informe o local do evento.",
+                minlength: "O local deve ter pelo menos 3 caracteres."
+            },
+
+            endereco: {
+                required: "Informe o endereço do evento.",
+                minlength: "Digite um endereço válido."
+            },
+
+            telefone: {
+                required: "Informe o telefone.",
+                minlength: "Informe um telefone válido."
+            },
+
+            email: {
+                required: "Informe o e-mail.",
+                email: "Digite um e-mail válido."
+            },
+
+            site: {
+                required: "Informe o site."
             }
 
         },
@@ -106,30 +163,40 @@ function validarFormulario() {
 
             console.log(
                 "Erro no campo:",
-                element.attr("name"),
+                element.attr("id"),
                 error.text()
             );
-
-            const campo = element.closest(".mb-4");
-
+        
+            const campo = element.closest(
+                ".col-md-4, .col-md-6, .col-12"
+            );
+        
             campo
                 .find(".invalid-feedback")
+                .first()
                 .text(error.text())
                 .addClass("d-block");
-
         },
-
 
         // =====================================
         // CAMPO INVÁLIDO
         // =====================================
 
-        highlight: function (element) {
+        unhighlight: function (element) {
 
+            const campo = $(element).closest(
+                ".col-md-4, .col-md-6, .col-12"
+            );
+        
             $(element)
-                .removeClass("is-valid")
-                .addClass("is-invalid");
-
+                .removeClass("is-invalid")
+                .addClass("is-valid");
+        
+            campo
+                .find(".invalid-feedback")
+                .first()
+                .text("")
+                .removeClass("d-block");
         },
 
 
@@ -139,11 +206,14 @@ function validarFormulario() {
 
         unhighlight: function (element) {
 
-            const campo = $(element).closest(".mb-4");
+            const campo = $(element)
+                .closest(".col-md-4, .col-md-6, .col-12");
+
 
             $(element)
                 .removeClass("is-invalid")
                 .addClass("is-valid");
+
 
             campo
                 .find(".invalid-feedback")
@@ -159,37 +229,48 @@ function validarFormulario() {
 
         submitHandler: async function (formulario) {
 
-            console.log("FORMULÁRIO VÁLIDO!");
+            console.log("FORMULÁRIO DE EVENTO VÁLIDO!");
+
+
+            // =================================
+            // FORMDATA
+            // =================================
 
             const dados = new FormData(formulario);
 
 
-            // Converte preço
-            const preco = $("#preco")
-                .val()
-                .replace(/\./g, "")
-                .replace(",", ".");
-
-            dados.set("preco", preco);
-
+            // =================================
+            // MOSTRA DADOS NO CONSOLE
+            // =================================
 
             console.table(
                 Object.fromEntries(dados.entries())
             );
 
 
-            // Mensagem
+            // =================================
+            // MENSAGEM
+            // =================================
+
             mensagem
-                .removeClass("d-none alert-danger alert-success")
+                .removeClass(
+                    "d-none alert-danger alert-success"
+                )
                 .addClass("alert-info");
 
-            mensagem.text("Enviando dados...");
+            mensagem.text(
+                "Enviando dados do evento..."
+            );
 
+
+            // =================================
+            // ENVIO PARA O CONTROLLER
+            // =================================
 
             try {
 
                 const resposta = await fetch(
-                    "controllers/ProdutoController.php",
+                    "controllers/EventoController.php",
                     {
                         method: "POST",
                         body: dados
@@ -199,7 +280,11 @@ function validarFormulario() {
 
                 const resultado = await resposta.json();
 
-                console.log("Resposta do PHP:", resultado);
+
+                console.log(
+                    "Resposta do PHP:",
+                    resultado
+                );
 
 
                 // =================================
@@ -209,15 +294,20 @@ function validarFormulario() {
                 if (!resposta.ok) {
 
                     mensagem
-                        .removeClass("alert-info alert-success")
+                        .removeClass(
+                            "alert-info alert-success"
+                        )
                         .addClass("alert-danger");
+
 
                     mensagem.text(
                         resultado.mensagem ||
-                        "Erro ao cadastrar produto."
+                        "Erro ao cadastrar evento."
                     );
 
+
                     return;
+
                 }
 
 
@@ -226,20 +316,30 @@ function validarFormulario() {
                 // =================================
 
                 mensagem
-                    .removeClass("alert-info alert-danger")
+                    .removeClass(
+                        "alert-info alert-danger"
+                    )
                     .addClass("alert-success");
 
+
                 mensagem.text(
-                    resultado.mensagem
+                    resultado.mensagem ||
+                    "Evento cadastrado com sucesso!"
                 );
 
+
+                // =================================
+                // LIMPA FORMULÁRIO
+                // =================================
 
                 formulario.reset();
 
 
                 $(formulario)
-                    .find(".form-control")
-                    .removeClass("is-valid is-invalid");
+                    .find(".form-control, .form-select")
+                    .removeClass(
+                        "is-valid is-invalid"
+                    );
 
 
                 $(formulario)
@@ -255,9 +355,13 @@ function validarFormulario() {
                     erro
                 );
 
+
                 mensagem
-                    .removeClass("alert-info alert-success")
+                    .removeClass(
+                        "alert-info alert-success"
+                    )
                     .addClass("alert-danger");
+
 
                 mensagem.text(
                     "Erro ao conectar com o controller."
@@ -274,20 +378,27 @@ function validarFormulario() {
     // RESET
     // =========================================
 
-    $("#formProduto").on("reset", function () {
+    $("#formEvento").on("reset", function () {
 
         $(this)
-            .find(".form-control")
-            .removeClass("is-valid is-invalid");
+            .find(".form-control, .form-select")
+            .removeClass(
+                "is-valid is-invalid"
+            );
+
 
         $(this)
             .find(".invalid-feedback")
             .text("")
             .removeClass("d-block");
 
+
         mensagem
-            .removeClass("alert-info alert-danger alert-success")
+            .removeClass(
+                "alert-info alert-danger alert-success"
+            )
             .addClass("d-none");
+
 
         mensagem.text("");
 

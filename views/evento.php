@@ -1,198 +1,465 @@
 <!-- CSS da página -->
-<link rel="stylesheet" href="assets/css/contato.css">
+<link rel="stylesheet" href="assets/css/evento.css">
 
-<section class="contato-container">
+<section class="evento-container">
 
-    <div class="contato-card">
+    <div class="evento-card">
 
-        <!-- Cabeçalho -->
-        <div class="contato-header">
+        <!-- =========================================
+             CABEÇALHO
+             ========================================= -->
 
-            <div class="contato-icon">
-                <i class="bi bi-envelope"></i>
+        <div class="evento-header">
+
+            <div class="evento-icon">
+                <i class="bi bi-calendar-event"></i>
             </div>
 
             <div>
-                <h2>Entre em contato</h2>
+                <h2>Cadastro de evento</h2>
 
                 <p>
-                    Preencha os dados abaixo para enviar uma mensagem.
+                    Preencha os dados abaixo para publicar um novo evento.
                 </p>
             </div>
 
         </div>
 
 
-        <!-- Formulário -->
-        <form id="formContato">
+        <!-- =========================================
+             FORMULÁRIO
+             ========================================= -->
+
+        <form id="formEvento">
+
+            <div class="row g-4">
 
 
-            <!-- Nome -->
-            <div class="mb-4">
+                <!-- =================================
+                     TÍTULO
+                     ================================= -->
 
-                <label for="nome" class="form-label">
-                    Nome
-                </label>
+                <div class="col-md-6">
 
-                <div class="input-group">
+                    <label for="titulo" class="form-label">
+                        Título do evento
+                    </label>
 
-                    <span class="input-group-text">
-                        <i class="bi bi-person"></i>
-                    </span>
+                    <div class="input-group">
 
-                    <input
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        class="form-control"
-                        placeholder="Digite seu nome completo"
-                    >
+                        <span class="input-group-text">
+                            <i class="bi bi-calendar-event"></i>
+                        </span>
+
+                        <input
+                            id="titulo"
+                            type="text"
+                            class="form-control"
+                            placeholder="Digite o título do evento">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Digite o título do evento.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
 
                 </div>
 
-                <div class="invalid-feedback"></div>
-                <div class="valid-feedback"></div>
+
+                <!-- =================================
+                     CATEGORIA
+                     ================================= -->
+
+                <div class="col-md-6">
+
+                    <label for="categoria" class="form-label">
+                        Categoria
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-tags"></i>
+                        </span>
+
+                        <select
+                            id="categoria"
+                            name="categoria"
+                            class="form-select">
+
+                            <option value="">
+                                Escolha uma categoria
+                            </option>
+
+                            <option value="Música">
+                                Música
+                            </option>
+
+                            <option value="Cultura">
+                                Cultura
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Selecione uma categoria.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     DESCRIÇÃO
+                     ================================= -->
+
+                <div class="col-12">
+
+                    <label for="descricao" class="form-label">
+                        Descrição completa
+                    </label>
+
+                    <div class="input-group input-group-textarea">
+
+                        <span class="input-group-text textarea-icon">
+                            <i class="bi bi-card-text"></i>
+                        </span>
+
+                        <textarea
+                            id="descricao"
+                            class="form-control"
+                            placeholder="Digite uma descrição completa do evento"></textarea>
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Digite uma descrição.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     IMAGEM
+                     ================================= -->
+
+                <div class="col-12">
+
+                    <label for="imagem" class="form-label">
+                        Imagem de capa
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-image"></i>
+                        </span>
+
+                        <input
+                            id="imagem"
+                            type="file"
+                            class="form-control"
+                            accept="image/*">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Selecione uma imagem de capa.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     DATA
+                     ================================= -->
+
+                <div class="col-md-6">
+
+                    <label for="data" class="form-label">
+                        Data
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-calendar3"></i>
+                        </span>
+
+                        <input
+                            id="data"
+                            type="date"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Informe a data do evento.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     HORÁRIO
+                     ================================= -->
+
+                <div class="col-md-6">
+
+                    <label for="horario" class="form-label">
+                        Horário
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-clock"></i>
+                        </span>
+
+                        <input
+                            id="horario"
+                            type="time"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Informe o horário.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     LOCAL
+                     ================================= -->
+
+                <div class="col-md-6">
+
+                    <label for="local" class="form-label">
+                        Local do evento
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-geo-alt"></i>
+                        </span>
+
+                        <input
+                            id="local"
+                            type="text"
+                            class="form-control"
+                            placeholder="Ex.: Centro Cultural">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Informe o local do evento.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     ENDEREÇO
+                     ================================= -->
+
+                <div class="col-md-6">
+
+                    <label for="endereco" class="form-label">
+                        Endereço
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-pin-map"></i>
+                        </span>
+
+                        <input
+                            id="endereco"
+                            type="text"
+                            class="form-control"
+                            placeholder="Digite o endereço">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Informe o endereço.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     TELEFONE
+                     ================================= -->
+
+                <div class="col-md-4">
+
+                    <label for="telefone" class="form-label">
+                        Telefone
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-telephone"></i>
+                        </span>
+
+                        <input
+                            id="telefone"
+                            type="text"
+                            class="form-control"
+                            placeholder="(00) 00000-0000">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Informe o telefone.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     EMAIL
+                     ================================= -->
+
+                <div class="col-md-4">
+
+                    <label for="email" class="form-label">
+                        E-mail
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+
+                        <input
+                            id="email"
+                            type="email"
+                            class="form-control"
+                            placeholder="email@exemplo.com">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Digite um e-mail válido.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     SITE
+                     ================================= -->
+
+                <div class="col-md-4">
+
+                    <label for="site" class="form-label">
+                        Site
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-globe"></i>
+                        </span>
+
+                        <input
+                            id="site"
+                            type="text"
+                            class="form-control"
+                            placeholder="www.exemplo.com">
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        Digite um site válido.
+                    </div>
+
+                    <div class="valid-feedback">
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <!-- E-mail -->
-            <div class="mb-4">
+            <!-- =========================================
+                 BOTÕES
+                 ========================================= -->
 
-                <label for="email" class="form-label">
-                    E-mail
-                </label>
+            <div class="evento-actions">
 
-                <div class="input-group">
+                <button
+                    type="button"
+                    class="btn btn-cancelar">
 
-                    <span class="input-group-text">
-                        <i class="bi bi-envelope"></i>
-                    </span>
+                    <i class="bi bi-x-circle me-2"></i>
 
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        class="form-control"
-                        placeholder="Digite seu e-mail"
-                    >
+                    Cancelar
 
-                </div>
-
-                <div class="invalid-feedback"></div>
-                <div class="valid-feedback"></div>
-
-            </div>
+                </button>
 
 
-            <!-- Telefone -->
-            <div class="mb-4">
+                <button
+                    type="submit"
+                    class="btn evento-button">
 
-                <label for="telefone" class="form-label">
-                    Telefone
-                </label>
+                    <i class="bi bi-check-circle me-2"></i>
 
-                <div class="input-group">
+                    Publicar evento
 
-                    <span class="input-group-text">
-                        <i class="bi bi-telephone"></i>
-                    </span>
-
-                    <input
-                        type="text"
-                        id="telefone"
-                        name="telefone"
-                        class="form-control"
-                        placeholder="(00) 00000-0000"
-                    >
-
-                </div>
-
-                <div class="invalid-feedback"></div>
-                <div class="valid-feedback"></div>
+                </button>
 
             </div>
-
-
-            <!-- Assunto -->
-            <div class="mb-4">
-
-                <label for="assunto" class="form-label">
-                    Assunto
-                </label>
-
-                <div class="input-group">
-
-                    <span class="input-group-text">
-                        <i class="bi bi-chat-left-text"></i>
-                    </span>
-
-                    <input
-                        type="text"
-                        id="assunto"
-                        name="assunto"
-                        class="form-control"
-                        placeholder="Digite o assunto"
-                    >
-
-                </div>
-
-                <div class="invalid-feedback"></div>
-                <div class="valid-feedback"></div>
-
-            </div>
-
-
-            <!-- Mensagem -->
-            <div class="mb-4">
-
-                <label for="mensagemTexto" class="form-label">
-                    Mensagem
-                </label>
-
-                <div class="input-group">
-
-                    <span class="input-group-text contato-textarea-icon">
-                        <i class="bi bi-pencil-square"></i>
-                    </span>
-
-                    <textarea
-                        id="mensagemTexto"
-                        name="mensagem"
-                        class="form-control contato-textarea"
-                        placeholder="Digite sua mensagem"
-                        rows="5"
-                    ></textarea>
-
-                </div>
-
-                <div class="invalid-feedback"></div>
-                <div class="valid-feedback"></div>
-
-            </div>
-
-
-            <!-- Botão -->
-            <button
-                type="submit"
-                class="btn btn-primary contato-button w-100"
-            >
-
-                <i class="bi bi-send me-2"></i>
-
-                Enviar mensagem
-
-            </button>
-
 
         </form>
 
 
-        <!-- Mensagem de retorno -->
+        <!-- =========================================
+             MENSAGEM
+             ========================================= -->
+
         <div
             id="mensagem"
-            class="alert d-none mt-3"
-        >
+            class="alert d-none mt-3">
         </div>
 
     </div>
@@ -200,14 +467,29 @@
 </section>
 
 
-<!-- jQuery -->
+<!-- =========================================
+     JQUERY
+     ========================================= -->
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- jQuery Validation -->
+
+<!-- =========================================
+     JQUERY VALIDATION
+     ========================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 
-<!-- jQuery Mask -->
+
+<!-- =========================================
+     JQUERY MASK
+     ========================================= -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-<!-- Script da página -->
-<script src="assets/js/contato.js"></script>
+
+<!-- =========================================
+     SCRIPT DA PÁGINA
+     ========================================= -->
+
+<script src="assets/js/evento.js"></script>

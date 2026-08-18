@@ -4,165 +4,92 @@
 
 <head>
 
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sistema de Cadastros</title>
-
-
-<!-- Bootstrap -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
->
+    <title>Eventos | Sistema de Cadastros</title>
 
 
-<!-- Bootstrap Icons -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
->
+    <!-- Bootstrap -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 
 
-<!-- Fonte Poppins -->
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-<!-- CSS da página -->
-<link rel="stylesheet" href="assets/css/landing.css">
+    <!-- Fonte Poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
+
+    <!-- CSS da página -->
+    <link rel="stylesheet" href="assets/css/landing.css">
 
 </head>
 
+
 <body>
 
-<!-- =========================================
+
+    <!-- =========================================
      CABEÇALHO
      ========================================= -->
 
-<header class="landing-header">
+    <header class="landing-header">
+
+        <nav class="navbar">
+
+            <div class="container">
+
+                <div class="landing-nav">
 
 
-<nav class="navbar">
+                    <!-- Logo -->
 
-    <div class="container">
+                    <a
+                        href="index.php?page=landing"
+                        class="landing-logo">
 
-        <div class="landing-nav">
+                        <span class="logo-icon">
+                            <i class="bi bi-calendar-event-fill"></i>
+                        </span>
 
+                        <span>
+                            Sistema de Eventos
+                        </span>
 
-            <!-- Logo -->
-
-            <a
-                href="index.php?page=landing"
-                class="landing-logo"
-            >
-
-                <span class="logo-icon">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                </span>
-
-                <span>
-                    Sistema de Cadastros
-                </span>
-
-            </a>
+                    </a>
 
 
-            <!-- Botão Login -->
-
-            <a
-                href="index.php?page=login"
-                class="btn-login"
-            >
-
-                <i class="bi bi-box-arrow-in-right"></i>
-
-                Entrar
-
-            </a>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-</header>
-
-<!-- =========================================
-     CONTEÚDO PRINCIPAL
-     ========================================= -->
-
-<main>
-
-
-<!-- =====================================
-     HERO
-     ===================================== -->
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="row align-items-center">
-
-
-            <!-- Texto -->
-
-            <div class="col-lg-6">
-
-                <span class="hero-badge">
-
-                    <i class="bi bi-stars"></i>
-
-                    Sistema de Gestão
-
-                </span>
-
-
-                <h1>
-
-                    Gerencie seus cadastros
-                    <span>de forma simples.</span>
-
-                </h1>
-
-
-                <p class="hero-description">
-
-                    Organize produtos, clientes e funcionários
-                    em um único sistema, de forma prática,
-                    rápida e eficiente.
-
-                </p>
-
-
-                <p class="hero-subtitle">
-
-                    Uma solução desenvolvida com PHP, MVC,
-                    Bootstrap, JavaScript e jQuery.
-
-                </p>
-
-
-                <!-- Botão -->
-
-                <div class="hero-buttons">
+                    <!-- Botão Entrar -->
 
                     <a
                         href="index.php?page=login"
-                        class="btn-primary-purple"
-                    >
+                        class="btn-login">
 
                         <i class="bi bi-box-arrow-in-right"></i>
 
-                        Acessar o sistema
+                        Entrar
+
+                    </a>
+
+
+                    <!-- Botão Cadastrar -->
+
+                    <a
+                        href="index.php?page=cadastro"
+                        class="btn-cadastrar">
+
+                        <i class="bi bi-person-plus"></i>
+
+                        Cadastrar
 
                     </a>
 
@@ -170,162 +97,432 @@
 
             </div>
 
+        </nav>
+
+    </header>
 
 
-            <!-- Painel visual -->
 
-            <div class="col-lg-6 mt-5 mt-lg-0">
+    <!-- =========================================
+     CONTEÚDO PRINCIPAL
+     ========================================= -->
 
-                <div class="dashboard-card">
+    <main class="eventos-main">
 
 
-                    <div class="dashboard-header">
+        <!-- =====================================
+         PESQUISA
+         ===================================== -->
 
-                        <div>
+        <section class="search-section">
 
-                            <span class="small-label">
-                                PAINEL
-                            </span>
+            <div class="container">
 
-                            <h3>
-                                Sistema de Cadastros
-                            </h3>
+                <div class="search-content">
+
+                    <span class="search-label">
+                        <i class="bi bi-stars"></i>
+                        Encontre seu próximo evento
+                    </span>
+
+                    <h1>
+                        Eventos para
+                        <span>viver e aproveitar.</span>
+                    </h1>
+
+                    <p>
+                        Encontre festas, shows, festivais e experiências
+                        acontecendo perto de você.
+                    </p>
+
+
+                    <!-- Barra de pesquisa -->
+
+                    <div class="event-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Pesquise eventos...">
+
+                        <button type="button">
+
+                            <i class="bi bi-search"></i>
+
+                            Buscar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+         CARROSSEL
+         ===================================== -->
+
+        <section class="carousel-section">
+
+            <div class="container">
+
+                <div
+                    id="carouselExample"
+                    class="carousel slide event-carousel"
+                    data-bs-ride="carousel">
+
+                    <div class="carousel-inner">
+
+
+                        <div class="carousel-item active">
+
+                            <img
+                                src="https://picsum.photos/1200/400?random=1"
+                                class="d-block w-100"
+                                alt="Imagem evento">
+
+                            <div class="carousel-caption-custom">
+
+                                <span>
+                                    EVENTO EM DESTAQUE
+                                </span>
+
+                                <h2>
+                                    Viva experiências incríveis
+                                </h2>
+
+                                <p>
+                                    Descubra eventos que combinam com você.
+                                </p>
+
+                            </div>
 
                         </div>
 
-                        <div class="dashboard-icon">
 
-                            <i class="bi bi-speedometer2"></i>
+                        <div class="carousel-item">
+
+                            <img
+                                src="https://picsum.photos/1200/400?random=2"
+                                class="d-block w-100"
+                                alt="Imagem evento">
+
+                            <div class="carousel-caption-custom">
+
+                                <span>
+                                    FESTAS & SHOWS
+                                </span>
+
+                                <h2>
+                                    Música para todos os momentos
+                                </h2>
+
+                                <p>
+                                    Encontre seu próximo show.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="carousel-item">
+
+                            <img
+                                src="https://picsum.photos/1200/400?random=3"
+                                class="d-block w-100"
+                                alt="Imagem evento">
+
+                            <div class="carousel-caption-custom">
+
+                                <span>
+                                    EXPERIÊNCIAS
+                                </span>
+
+                                <h2>
+                                    Tem sempre algo acontecendo
+                                </h2>
+
+                                <p>
+                                    Explore os eventos disponíveis.
+                                </p>
+
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <p class="dashboard-text">
+                    <!-- Botão voltar -->
 
-                        Tenha suas principais informações
-                        organizadas em um só lugar.
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
 
-                    </p>
+                        <span class="carousel-control-prev-icon"></span>
 
-
-                    <!-- Categorias -->
-
-                    <div class="dashboard-options">
-
-
-                        <!-- Produtos -->
-
-                        <a
-                            href="index.php?page=produtos"
-                            class="dashboard-option"
-                        >
-
-                            <div class="option-icon">
-
-                                <i class="bi bi-box-seam"></i>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Produtos
-                                </strong>
-
-                                <small>
-                                    Gerenciar produtos
-                                </small>
-
-                            </div>
-
-                        </a>
+                    </button>
 
 
-                        <!-- Clientes -->
+                    <!-- Botão avançar -->
 
-                        <a
-                            href="index.php?page=clientes"
-                            class="dashboard-option"
-                        >
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="next">
 
-                            <div class="option-icon">
+                        <span class="carousel-control-next-icon"></span>
 
-                                <i class="bi bi-people"></i>
+                    </button>
 
-                            </div>
+                </div>
 
-                            <div>
+            </div>
 
-                                <strong>
-                                    Clientes
-                                </strong>
-
-                                <small>
-                                    Gerenciar clientes
-                                </small>
-
-                            </div>
-
-                        </a>
+        </section>
 
 
-                        <!-- Funcionários -->
 
-                        <a
-                            href="index.php?page=funcionarios"
-                            class="dashboard-option"
-                        >
+        <!-- =====================================
+         EVENTOS EM DESTAQUE
+         ===================================== -->
 
-                            <div class="option-icon">
+        <section class="events-section">
 
-                                <i class="bi bi-person-badge"></i>
+            <div class="container">
 
-                            </div>
 
-                            <div>
+                <div class="section-heading">
 
-                                <strong>
-                                    Funcionários
-                                </strong>
+                    <div>
 
-                                <small>
-                                    Gerenciar funcionários
-                                </small>
+                        <span>
+                            EVENTOS
+                        </span>
+
+                        <h2>
+                            Eventos em destaque
+                        </h2>
+
+                        <p>
+                            Confira algumas experiências que estão esperando por você.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Cards -->
+
+                <div class="row g-4">
+
+
+                    <!-- Evento 1 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=4"
+                                    alt="Evento 1">
+
+                                <span class="event-category">
+                                    Música
+                                </span>
 
                             </div>
 
-                        </a>
 
+                            <div class="event-body">
 
-                        <!-- Contato -->
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    20 AGO 2026
+                                </span>
 
-                        <a
-                            href="index.php?page=contato"
-                            class="dashboard-option"
-                        >
+                                <h5>
+                                    Evento 1
+                                </h5>
 
-                            <div class="option-icon">
+                                <p>
+                                    Descrição do evento.
+                                </p>
 
-                                <i class="bi bi-envelope"></i>
+                                <a href="#" class="event-link">
 
-                            </div>
+                                    Saiba mais
 
-                            <div>
+                                    <i class="bi bi-arrow-right"></i>
 
-                                <strong>
-                                    Contato
-                                </strong>
-
-                                <small>
-                                    Enviar uma mensagem
-                                </small>
+                                </a>
 
                             </div>
 
-                        </a>
+                        </div>
 
+                    </div>
+
+
+
+                    <!-- Evento 2 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=5"
+                                    alt="Evento 2">
+
+                                <span class="event-category">
+                                    Cultura
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    22 AGO 2026
+                                </span>
+
+                                <h5>
+                                    Evento 2
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Evento 3 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=6"
+                                    alt="Evento 3">
+
+                                <span class="event-category">
+                                    Festival
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    25 AGO 2026
+                                </span>
+
+                                <h5>
+                                    Evento 3
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Evento 4 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=7"
+                                    alt="Evento 4">
+
+                                <span class="event-category">
+                                    Entretenimento
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    28 AGO 2026
+                                </span>
+
+                                <h5>
+                                    Evento 4
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -333,287 +530,303 @@
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
 
-<!-- =====================================
-     RECURSOS
-     ===================================== -->
+        <!-- =====================================
+         FESTAS, SHOWS E FESTIVAIS
+         ===================================== -->
 
-<section class="resources">
+        <section class="category-section">
 
-    <div class="container">
-
-
-        <div class="section-title">
-
-            <span>
-                FUNCIONALIDADES
-            </span>
-
-            <h2>
-                Tudo organizado em um só lugar
-            </h2>
-
-            <p>
-                Tenha acesso rápido às principais áreas
-                do sistema.
-            </p>
-
-        </div>
+            <div class="container">
 
 
-        <div class="row g-4">
+                <div class="section-heading">
 
+                    <div>
 
-            <!-- Produtos -->
+                        <span>
+                            CATEGORIAS
+                        </span>
 
-            <div class="col-md-4">
+                        <h2>
+                            Festas, shows e festivais
+                        </h2>
 
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-
-                        <i class="bi bi-box-seam"></i>
+                        <p>
+                            Explore diferentes tipos de eventos.
+                        </p>
 
                     </div>
 
-                    <h5>
-                        Produtos
-                    </h5>
+                </div>
 
-                    <p>
-                        Cadastre e gerencie os produtos
-                        do sistema de maneira organizada.
-                    </p>
 
-                    <a href="index.php?page=produtos">
+                <div class="row g-4">
 
-                        Acessar
 
-                        <i class="bi bi-arrow-right"></i>
+                    <!-- Evento 5 -->
 
-                    </a>
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=8"
+                                    alt="Evento 5">
+
+                                <span class="event-category">
+                                    Festa
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    30 AGO 2026
+                                </span>
+
+                                <h5>
+                                    Evento 5
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Evento 6 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=9"
+                                    alt="Evento 6">
+
+                                <span class="event-category">
+                                    Show
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    02 SET 2026
+                                </span>
+
+                                <h5>
+                                    Evento 6
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Evento 7 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=10"
+                                    alt="Evento 7">
+
+                                <span class="event-category">
+                                    Festival
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    05 SET 2026
+                                </span>
+
+                                <h5>
+                                    Evento 7
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Evento 8 -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="event-card">
+
+                            <div class="event-image">
+
+                                <img
+                                    src="https://picsum.photos/400/250?random=11"
+                                    alt="Evento 8">
+
+                                <span class="event-category">
+                                    Cultura
+                                </span>
+
+                            </div>
+
+
+                            <div class="event-body">
+
+                                <span class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    08 SET 2026
+                                </span>
+
+                                <h5>
+                                    Evento 8
+                                </h5>
+
+                                <p>
+                                    Descrição do evento.
+                                </p>
+
+                                <a href="#" class="event-link">
+
+                                    Saiba mais
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
             </div>
 
+        </section>
 
 
-            <!-- Clientes -->
+    </main>
 
-            <div class="col-md-4">
 
-                <div class="feature-card">
 
-                    <div class="feature-icon">
-
-                        <i class="bi bi-people"></i>
-
-                    </div>
-
-                    <h5>
-                        Clientes
-                    </h5>
-
-                    <p>
-                        Organize os dados e informações
-                        dos clientes cadastrados.
-                    </p>
-
-                    <a href="index.php?page=clientes">
-
-                        Acessar
-
-                        <i class="bi bi-arrow-right"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Funcionários -->
-
-            <div class="col-md-4">
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-
-                        <i class="bi bi-person-badge"></i>
-
-                    </div>
-
-                    <h5>
-                        Funcionários
-                    </h5>
-
-                    <p>
-                        Gerencie os funcionários
-                        cadastrados no sistema.
-                    </p>
-
-                    <a href="index.php?page=funcionarios">
-
-                        Acessar
-
-                        <i class="bi bi-arrow-right"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Contato -->
-
-            <div class="col-md-4">
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-
-                        <i class="bi bi-envelope"></i>
-
-                    </div>
-
-                    <h5>
-                        Contato
-                    </h5>
-
-                    <p>
-                        Entre em contato conosco
-                        através do formulário do sistema.
-                    </p>
-
-                    <a href="index.php?page=contato">
-
-                        Acessar
-
-                        <i class="bi bi-arrow-right"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================
-     CHAMADA PARA LOGIN
-     ===================================== -->
-
-<section class="access-section">
-
-    <div class="container">
-
-        <div class="access-card">
-
-            <div>
-
-                <span>
-                    ACESSO ADMINISTRATIVO
-                </span>
-
-                <h2>
-                    Pronto para começar?
-                </h2>
-
-                <p>
-                    Acesse o sistema e gerencie
-                    seus cadastros.
-                </p>
-
-            </div>
-
-
-            <a
-                href="index.php?page=login"
-                class="btn-access"
-            >
-
-                <i class="bi bi-box-arrow-in-right"></i>
-
-                Entrar no sistema
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-<!-- =========================================
+    <!-- =========================================
      RODAPÉ
      ========================================= -->
 
-<footer class="landing-footer">
+    <footer class="landing-footer">
 
-<div class="container">
+        <div class="container">
 
-    <div class="footer-content">
+            <div class="footer-content">
 
 
-        <div>
+                <div>
 
-            <strong>
+                    <strong>
 
-                <i class="bi bi-grid-1x2-fill"></i>
+                        <i class="bi bi-calendar-event-fill"></i>
 
-                Sistema de Cadastros
+                        Sistema de Eventos
 
-            </strong>
+                    </strong>
 
-            <p>
-                Sistema de gerenciamento de cadastros.
-            </p>
+                    <p>
+                        Encontre eventos e experiências em um só lugar.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Desenvolvido com PHP • MVC • Bootstrap
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-        <div>
-
-            <span>
-                Desenvolvido com PHP • MVC • Bootstrap
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
+    </footer>
 
 
-</footer>
 
-<!-- Bootstrap JS -->
+    <!-- Bootstrap JS -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
-</script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+
 
 </body>
 

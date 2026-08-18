@@ -1,33 +1,61 @@
 <?php
 
-//A resposta será enviada no formato JSON
+// =========================================
+// RESPOSTA JSON
+// =========================================
+
 header("Content-Type: application/json; charset=utf-8");
 
-//Carrega a classe Validator.
+
+// =========================================
+// CARREGA O VALIDATOR
+// =========================================
+
 require __DIR__ . "/../libs/Validator.php";
 
-//Cria o objeto validador
-$validator = new Validator($_POST);
 
-//Executa a função que contém as regras de validação
-validarCadastro($validator);
+// =========================================
+// VERIFICA O MÉTODO DA REQUISIÇÃO
+// =========================================
 
-//Verifica se a requisição é do tipo POST
-if($_SERVER["REQUEST_METHOD"] !== "POST"){
- http_response_code(405); //405 - método não permitido
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
- echo json_encode([
-    "sucesso" => false, 
-    "mensagem" => "Método não permitido, esperava GET"
- ]);
+    http_response_code(405);
 
- exit;
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Método não permitido, esperava POST."
+    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+    exit;
 }
 
-// -------->>> TODO: Aqui seria o banco de dados 
+
+// =========================================
+// CRIA O VALIDADOR
+// =========================================
+
+$validator = new Validator($_POST);
 
 
-//Verifica se tem erros
+// =========================================
+// EXECUTA AS REGRAS DE VALIDAÇÃO
+// =========================================
+
+validarCadastro($validator);
+
+
+// =========================================
+// BANCO DE DADOS
+// =========================================
+
+// TODO: Aqui seria o banco de dados
+
+
+// =========================================
+// VERIFICA SE EXISTEM ERROS
+// =========================================
+
 if ($validator->fails()) {
 
     http_response_code(422);
@@ -42,26 +70,187 @@ if ($validator->fails()) {
 }
 
 
-//Retornar sucesso 
-http_response_code(200); 
+// =========================================
+// RETORNA SUCESSO
+// =========================================
+
+http_response_code(200);
 
 echo json_encode([
     "sucesso" => true,
-    "mensagem" => "Dados validados com sucesso.",
+    "mensagem" => "Evento validado com sucesso.",
     "dados" => $validator->data()
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
 exit;
 
 
-
-// ------ Funções auxiliares ------------
-
+// =========================================
+// FUNÇÕES AUXILIARES
+// =========================================
 
 function validarCadastro($validator)
 {
-    $validator->required("nome", "Informe o nome.");
-    $validator->string("nome", "O nome deve ser um texto.");
-    $validator->minLength("nome", 3, "O nome deve ter pelo menos 3 caracteres.");
-    $validator->maxLength("nome", 30, "O nome deve ter no máximo 30 caracteres.");
+
+    // =====================================
+    // TÍTULO
+    // =====================================
+
+    $validator->required(
+        "titulo",
+        "Informe o título do evento."
+    );
+
+    $validator->string(
+        "titulo",
+        "O título deve ser um texto."
+    );
+
+    $validator->minLength(
+        "titulo",
+        3,
+        "O título deve ter pelo menos 3 caracteres."
+    );
+
+    $validator->maxLength(
+        "titulo",
+        100,
+        "O título deve ter no máximo 100 caracteres."
+    );
+
+
+    // =====================================
+    // CATEGORIA
+    // =====================================
+
+    $validator->required(
+        "categoria",
+        "Selecione uma categoria."
+    );
+
+
+    $validator->string(
+        "categoria",
+        "A categoria deve ser um texto."
+    );
+
+
+    // =====================================
+    // DESCRIÇÃO
+    // =====================================
+
+    $validator->required(
+        "descricao",
+        "Informe a descrição do evento."
+    );
+
+
+    $validator->string(
+        "descricao",
+        "A descrição deve ser um texto."
+    );
+
+
+    $validator->minLength(
+        "descricao",
+        10,
+        "A descrição deve ter pelo menos 10 caracteres."
+    );
+
+
+    // =====================================
+    // DATA
+    // =====================================
+
+    $validator->required(
+        "data",
+        "Informe a data do evento."
+    );
+
+
+    // =====================================
+    // HORÁRIO
+    // =====================================
+
+    $validator->required(
+        "horario",
+        "Informe o horário do evento."
+    );
+
+
+    // =====================================
+    // LOCAL
+    // =====================================
+
+    $validator->required(
+        "local",
+        "Informe o local do evento."
+    );
+
+
+    $validator->string(
+        "local",
+        "O local deve ser um texto."
+    );
+
+
+    $validator->minLength(
+        "local",
+        3,
+        "O local deve ter pelo menos 3 caracteres."
+    );
+
+
+    // =====================================
+    // ENDEREÇO
+    // =====================================
+
+    $validator->required(
+        "endereco",
+        "Informe o endereço do evento."
+    );
+
+
+    $validator->string(
+        "endereco",
+        "O endereço deve ser um texto."
+    );
+
+
+    $validator->minLength(
+        "endereco",
+        5,
+        "O endereço deve ter pelo menos 5 caracteres."
+    );
+
+
+    // =====================================
+    // TELEFONE
+    // =====================================
+
+    $validator->required(
+        "telefone",
+        "Informe o telefone."
+    );
+
+
+    // =====================================
+    // E-MAIL
+    // =====================================
+
+    $validator->required(
+        "email",
+        "Informe o e-mail."
+    );
+
+
+    // =====================================
+    // SITE
+    // =====================================
+
+    $validator->required(
+        "site",
+        "Informe o site."
+    );
+
 }

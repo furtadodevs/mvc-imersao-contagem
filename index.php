@@ -104,58 +104,16 @@ $paginaInicial = ($page === "landing" || $page === "login");
                 <!-- Produtos -->
 
                 <a
-                    href="index.php?page=produtos"
-                    class="<?= $page === 'produtos' ? 'active' : '' ?>"
+                    href="index.php?page=eventos"
+                    class="<?= $page === 'eventos' ? 'active' : '' ?>"
                 >
 
                     <i class="bi bi-box-seam"></i>
 
-                    Produtos
+                    Eventos
 
                 </a>
-
-
-                <!-- Clientes -->
-
-                <a
-                    href="index.php?page=clientes"
-                    class="<?= $page === 'clientes' ? 'active' : '' ?>"
-                >
-
-                    <i class="bi bi-people"></i>
-
-                    Clientes
-
-                </a>
-
-
-                <!-- Funcionários -->
-
-                <a
-                    href="index.php?page=funcionarios"
-                    class="<?= $page === 'funcionarios' ? 'active' : '' ?>"
-                >
-
-                    <i class="bi bi-person-badge"></i>
-
-                    Funcionários
-
-                </a>
-
-
-                <!-- Contato -->
-
-                <a
-                    href="index.php?page=contato"
-                    class="<?= $page === 'contato' ? 'active' : '' ?>"
-                >
-
-                    <i class="bi bi-envelope"></i>
-
-                    Contato
-
-                </a>
-
+               
 
                 <!-- Sair -->
 
