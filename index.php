@@ -5,189 +5,205 @@
 <head>
 
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sistema de Cadastros</title>
-
-
-<!-- Bootstrap -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
->
+    <title>Sistema de Cadastros</title>
 
 
-<!-- Bootstrap Icons -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
->
+    <!-- Bootstrap -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 
 
-<!-- Fonte -->
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-<!-- CSS geral -->
-<link rel="stylesheet" href="assets/css/style.css">
+    <!-- Fonte -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- CSS geral -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
 
-<?php
+    <?php
 
-// Captura a página atual
-$page = $_GET["page"] ?? "landing";
-
-
-// Se estiver na Landing ou Login,
-// não mostra o menu interno.
-$paginaInicial = ($page === "landing" || $page === "login");
-
-?>
-
-<?php if (!$paginaInicial): ?>
+    // Captura a página atual
+    $page = $_GET["page"] ?? "landing";
 
 
-<!-- ==============================
+    // Se estiver na Landing ou Login,
+    // não mostra o menu interno.
+    $paginaInicial = ($page === "landing" || $page === "login");
+
+    ?>
+
+    <?php if (!$paginaInicial): ?>
+
+
+        <!-- ==============================
      NAVBAR
      ============================== -->
 
-<header class="navbar-sistema">
+        <header class="navbar-sistema">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="navbar-content">
-
-
-            <!-- Logo -->
-
-            <a
-                href="index.php?page=home"
-                class="logo-sistema"
-            >
-
-                <i class="bi bi-grid-1x2-fill"></i>
-
-                <span>
-                    Sistema de Cadastros
-                </span>
-
-            </a>
+                <div class="navbar-content">
 
 
-            <!-- Menu -->
+                    <!-- Logo -->
 
-            <nav class="menu-sistema">
+                    <a
+                        href="index.php?page=home"
+                        class="logo-sistema">
 
+                        <i class="bi bi-grid-1x2-fill"></i>
 
-                <!-- Home -->
+                        <span>
+                            Sistema de Cadastros
+                        </span>
 
-                <a
-                    href="index.php?page=home"
-                    class="<?= $page === 'home' ? 'active' : '' ?>"
-                >
-
-                    <i class="bi bi-house"></i>
-
-                    Home
-
-                </a>
+                    </a>
 
 
-                <!-- Produtos -->
+                    <!-- Menu -->
 
-                <a
-                    href="index.php?page=eventos"
-                    class="<?= $page === 'eventos' ? 'active' : '' ?>"
-                >
-
-                    <i class="bi bi-box-seam"></i>
-
-                    Eventos
-
-                </a>
-               
-
-                <!-- Sair -->
-
-                <a
-                    href="index.php?page=landing"
-                    class="sair"
-                >
-
-                    <i class="bi bi-box-arrow-right"></i>
-
-                    Sair
-
-                </a>
+                    <nav class="menu-sistema">
 
 
-            </nav>
+                        <!-- Home -->
 
-        </div>
+                        <a
+                            href="index.php?page=home"
+                            class="<?= $page === 'home' ? 'active' : '' ?>">
 
-    </div>
+                            <i class="bi bi-house"></i>
 
-</header>
+                            Home
+
+                        </a>
 
 
-<?php endif; ?>
+                        <!-- Produtos -->
 
-<!-- ==============================
+                        <a
+                            href="index.php?page=eventos"
+                            class="<?= $page === 'eventos' ? 'active' : '' ?>">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            Eventos
+
+                        </a>
+
+                        <!-- Sair -->
+
+                        <a
+                            href="index.php?page=landing"
+                            class="sair">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                            Sair
+
+                        </a>
+
+                        <!-- Usuário logado -->
+
+                        <a
+                            href="index.php?page=landing"
+                            class="usuario-logado">
+
+                            <img
+                                src="https://i.pravatar.cc/45?img=12"
+                                alt="Usuário"
+                                class="usuario-foto">
+
+                            <div class="usuario-info">
+
+                                <strong>
+                                    João Silva
+                                </strong>
+
+                                <small>
+                                    Administrador
+                                </small>
+
+                            </div>
+
+                        </a>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+    <?php endif; ?>
+
+    <!-- ==============================
      CONTEÚDO
      ============================== -->
 
-<main class="<?= $paginaInicial ? '' : 'conteudo-sistema' ?>">
+    <main class="<?= $paginaInicial ? '' : 'conteudo-sistema' ?>">
 
 
-<?php
+        <?php
 
-// Carrega todas as páginas através do routes.php
-require __DIR__ . "/routes.php";
+        // Carrega todas as páginas através do routes.php
+        require __DIR__ . "/routes.php";
 
-?>
-
-
-</main>
-
-<?php if (!$paginaInicial): ?>
+        ?>
 
 
-<!-- ==============================
+    </main>
+
+    <?php if (!$paginaInicial): ?>
+
+
+        <!-- ==============================
      FOOTER
      ============================== -->
 
-<footer class="footer-sistema">
+        <footer class="footer-sistema">
 
-    <p>
-        Sistema de Cadastros
-    </p>
+            <p>
+                Sistema de Cadastros
+            </p>
 
-</footer>
+        </footer>
 
 
-<?php endif; ?>
+    <?php endif; ?>
 
-<!-- Bootstrap -->
+    <!-- Bootstrap -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
-</script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-<!-- Constantes -->
+    <!-- Constantes -->
 
-<script src="config/constants.js"></script>
+    <script src="config/constants.js"></script>
 
-<!-- Helpers -->
+    <!-- Helpers -->
 
-<script src="js/helpers.js"></script>
+    <script src="js/helpers.js"></script>
 
 </body>
 

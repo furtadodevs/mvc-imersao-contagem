@@ -159,6 +159,7 @@ body {
 }
 
 
+
 /* =========================================
    SAIR
    ========================================= */
@@ -178,6 +179,90 @@ body {
     color: #ffffff;
 }
 
+/* =========================================
+   USUÁRIO LOGADO
+   ========================================= */
+
+   .usuario-logado {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 6px 10px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.usuario-logado:hover {
+
+    background: rgba(255, 255, 255, 0.10);
+
+    color: #ffffff;
+
+    text-decoration: none;
+}
+
+
+/* Foto */
+
+.usuario-foto {
+
+    width: 38px;
+
+    height: 38px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #ffffff;
+
+    flex-shrink: 0;
+}
+
+
+/* Informações */
+
+.usuario-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.2;
+}
+
+
+.usuario-info strong {
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.usuario-info small {
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
 
 /* =========================================
    CONTEÚDO
