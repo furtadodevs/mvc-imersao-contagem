@@ -72,7 +72,7 @@
                         <i class="bi bi-grid-1x2-fill"></i>
 
                         <span>
-                            Sistema de Cadastros
+                            Sistema de Eventos
                         </span>
 
                     </a>
