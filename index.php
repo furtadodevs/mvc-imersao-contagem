@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sistema de Cadastros</title>
+    <title>Sistema de Eventos</title>
 
 
     <!-- Bootstrap -->
