@@ -3,30 +3,33 @@
     <!-- CSS da página -->
     <link rel="stylesheet" href="assets/css/home.css">
 
-   
+
 
     <!-- ==============================
-         CABEÇALHO
-         ============================== -->
+     MENSAGEM DE BOAS-VINDAS
+     ============================== -->
 
     <div class="home-header mb-5">
 
         <div class="header-icon">
-            <i class="bi bi-calendar-event"></i>
+
+            <i class="bi bi-hand-wave"></i>
+
         </div>
 
         <div>
 
-            <h2>Eventos</h2>
+            <h2>
+                Olá, João Silva! 👋
+            </h2>
 
             <p>
-                Visualize os eventos cadastrados e gerencie os eventos do sistema.
+                O que você está procurando hoje?
             </p>
 
         </div>
 
     </div>
-
 
     <!-- ==============================
          AÇÕES

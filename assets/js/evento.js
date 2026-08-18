@@ -6,10 +6,57 @@ $(document).ready(function () {
 
     console.log("evento.js carregado!");
 
+    prepararCampos();
+
     aplicarMascaras();
+
     validarFormulario();
+ // =========================================
+// BOTÃO CANCELAR
+// =========================================
+
+$(".btn-cancelar").on("click", function () {
+
+    window.location.href = "index.php?page=home";
 
 });
+
+});
+
+
+// =========================================
+// PREPARA OS CAMPOS
+// =========================================
+
+function prepararCampos() {
+
+    // =====================================
+    // ADICIONA NAME AOS CAMPOS
+    // =====================================
+
+    $("#titulo").attr("name", "titulo");
+
+    $("#categoria").attr("name", "categoria");
+
+    $("#descricao").attr("name", "descricao");
+
+    $("#imagem").attr("name", "imagem");
+
+    $("#data").attr("name", "data");
+
+    $("#horario").attr("name", "horario");
+
+    $("#local").attr("name", "local");
+
+    $("#endereco").attr("name", "endereco");
+
+    $("#telefone").attr("name", "telefone");
+
+    $("#email").attr("name", "email");
+
+    $("#site").attr("name", "site");
+
+}
 
 
 // =========================================
@@ -18,8 +65,134 @@ $(document).ready(function () {
 
 function aplicarMascaras() {
 
-    // Telefone
     $("#telefone").mask("(00) 00000-0000");
+
+}
+
+
+// =========================================
+// VALIDAÇÕES PERSONALIZADAS
+// =========================================
+
+function configurarValidacoesCustomizadas() {
+
+    // =====================================
+    // TELEFONE
+    // =====================================
+
+    $.validator.addMethod(
+        "telefoneValido",
+        function (value, element) {
+
+            if (this.optional(element)) {
+                return true;
+            }
+
+            return /^\(\d{2}\) \d{5}-\d{4}$/.test(value);
+
+        },
+        "Informe um telefone válido."
+    );
+
+
+    // =====================================
+    // SITE
+    // =====================================
+
+    $.validator.addMethod(
+        "siteValido",
+        function (value, element) {
+
+            if (this.optional(element)) {
+                return true;
+            }
+
+            value = value.trim();
+
+            return /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/.*)?$/.test(value);
+
+        },
+        "Digite um site válido."
+    );
+
+
+    // =====================================
+    // DATA
+    // =====================================
+
+    $.validator.addMethod(
+        "dataValida",
+        function (value, element) {
+
+            if (this.optional(element)) {
+                return true;
+            }
+
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+                return false;
+            }
+
+            const partes = value.split("-");
+
+            const ano = parseInt(partes[0]);
+            const mes = parseInt(partes[1]) - 1;
+            const dia = parseInt(partes[2]);
+
+            const data = new Date(
+                ano,
+                mes,
+                dia
+            );
+
+            return (
+                data.getFullYear() === ano &&
+                data.getMonth() === mes &&
+                data.getDate() === dia
+            );
+
+        },
+        "Informe uma data válida."
+    );
+
+
+    // =====================================
+    // HORÁRIO
+    // =====================================
+
+    $.validator.addMethod(
+        "horarioValido",
+        function (value, element) {
+
+            if (this.optional(element)) {
+                return true;
+            }
+
+            return /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value);
+
+        },
+        "Informe um horário válido."
+    );
+
+
+    // =====================================
+    // IMAGEM
+    // =====================================
+
+    $.validator.addMethod(
+        "imagemValida",
+        function (value, element) {
+
+            if (!element.files || element.files.length === 0) {
+                return false;
+            }
+
+            const arquivo = element.files[0];
+
+            return arquivo.type.startsWith("image/");
+
+        },
+        "Selecione uma imagem válida."
+    );
 
 }
 
@@ -34,8 +207,16 @@ function validarFormulario() {
 
     const mensagem = $("#mensagem");
 
+    configurarValidacoesCustomizadas();
+
 
     $("#formEvento").validate({
+
+        // =====================================
+        // NÃO PERMITE ENVIO SE EXISTIREM ERROS
+        // =====================================
+
+        onsubmit: true,
 
         // =====================================
         // REGRAS
@@ -45,7 +226,8 @@ function validarFormulario() {
 
             titulo: {
                 required: true,
-                minlength: 3
+                minlength: 3,
+                maxlength: 100
             },
 
             categoria: {
@@ -54,34 +236,40 @@ function validarFormulario() {
 
             descricao: {
                 required: true,
-                minlength: 10
+                minlength: 10,
+                maxlength: 2000
             },
 
             imagem: {
-                required: true
+                required: true,
+                imagemValida: true
             },
 
             data: {
-                required: true
+                required: true,
+                dataValida: true
             },
 
             horario: {
-                required: true
+                required: true,
+                horarioValido: true
             },
 
             local: {
                 required: true,
-                minlength: 3
+                minlength: 3,
+                maxlength: 150
             },
 
             endereco: {
                 required: true,
-                minlength: 5
+                minlength: 5,
+                maxlength: 200
             },
 
             telefone: {
                 required: true,
-                minlength: 14
+                telefoneValido: true
             },
 
             email: {
@@ -90,7 +278,8 @@ function validarFormulario() {
             },
 
             site: {
-                required: true
+                required: true,
+                siteValido: true
             }
 
         },
@@ -104,7 +293,8 @@ function validarFormulario() {
 
             titulo: {
                 required: "Informe o título do evento.",
-                minlength: "O título deve ter pelo menos 3 caracteres."
+                minlength: "O título deve ter pelo menos 3 caracteres.",
+                maxlength: "O título deve ter no máximo 100 caracteres."
             },
 
             categoria: {
@@ -112,35 +302,41 @@ function validarFormulario() {
             },
 
             descricao: {
-                required: "Digite uma descrição para o evento.",
-                minlength: "A descrição deve ter pelo menos 10 caracteres."
+                required: "Informe a descrição do evento.",
+                minlength: "A descrição deve ter pelo menos 10 caracteres.",
+                maxlength: "A descrição deve ter no máximo 2000 caracteres."
             },
 
             imagem: {
-                required: "Selecione uma imagem de capa."
+                required: "Selecione uma imagem de capa.",
+                imagemValida: "Selecione uma imagem válida."
             },
 
             data: {
-                required: "Informe a data do evento."
+                required: "Informe a data do evento.",
+                dataValida: "Informe uma data válida."
             },
 
             horario: {
-                required: "Informe o horário do evento."
+                required: "Informe o horário do evento.",
+                horarioValido: "Informe um horário válido."
             },
 
             local: {
                 required: "Informe o local do evento.",
-                minlength: "O local deve ter pelo menos 3 caracteres."
+                minlength: "O local deve ter pelo menos 3 caracteres.",
+                maxlength: "O local deve ter no máximo 150 caracteres."
             },
 
             endereco: {
                 required: "Informe o endereço do evento.",
-                minlength: "Digite um endereço válido."
+                minlength: "O endereço deve ter pelo menos 5 caracteres.",
+                maxlength: "O endereço deve ter no máximo 200 caracteres."
             },
 
             telefone: {
                 required: "Informe o telefone.",
-                minlength: "Informe um telefone válido."
+                telefoneValido: "Informe o telefone completo: (00) 00000-0000."
             },
 
             email: {
@@ -149,108 +345,99 @@ function validarFormulario() {
             },
 
             site: {
-                required: "Informe o site."
+                required: "Informe o site.",
+                siteValido: "Digite um site válido."
             }
 
         },
 
 
         // =====================================
-        // MENSAGEM DE ERRO
+        // MOSTRA O ERRO
         // =====================================
 
         errorPlacement: function (error, element) {
 
-            console.log(
-                "Erro no campo:",
-                element.attr("id"),
-                error.text()
-            );
-        
             const campo = element.closest(
                 ".col-md-4, .col-md-6, .col-12"
             );
-        
+
             campo
                 .find(".invalid-feedback")
                 .first()
                 .text(error.text())
                 .addClass("d-block");
+
         },
+
 
         // =====================================
         // CAMPO INVÁLIDO
         // =====================================
 
-        unhighlight: function (element) {
+highlight: function (element) {
 
-            const campo = $(element).closest(
-                ".col-md-4, .col-md-6, .col-12"
-            );
-        
-            $(element)
-                .removeClass("is-invalid")
-                .addClass("is-valid");
-        
-            campo
-                .find(".invalid-feedback")
-                .first()
-                .text("")
-                .removeClass("d-block");
-        },
+    const campo = $(element).closest(
+        ".col-md-4, .col-md-6, .col-12"
+    );
+
+    $(element)
+        .removeClass("is-valid")
+        .addClass("is-invalid")
+        .css("background-image", "none");
+
+    campo
+        .find(".invalid-feedback")
+        .first()
+        .addClass("d-block");
+
+},
 
 
         // =====================================
         // CAMPO VÁLIDO
         // =====================================
 
-        unhighlight: function (element) {
+unhighlight: function (element) {
 
-            const campo = $(element)
-                .closest(".col-md-4, .col-md-6, .col-12");
+    const campo = $(element).closest(
+        ".col-md-4, .col-md-6, .col-12"
+    );
 
+    $(element)
+        .removeClass("is-invalid")
+        .addClass("is-valid")
+        .css("background-image", "none");
 
-            $(element)
-                .removeClass("is-invalid")
-                .addClass("is-valid");
+    campo
+        .find(".invalid-feedback")
+        .first()
+        .text("")
+        .removeClass("d-block");
 
-
-            campo
-                .find(".invalid-feedback")
-                .text("")
-                .removeClass("d-block");
-
-        },
-
-
+},
         // =====================================
         // FORMULÁRIO VÁLIDO
         // =====================================
 
         submitHandler: async function (formulario) {
 
-            console.log("FORMULÁRIO DE EVENTO VÁLIDO!");
-
-
-            // =================================
-            // FORMDATA
-            // =================================
-
-            const dados = new FormData(formulario);
-
-
-            // =================================
-            // MOSTRA DADOS NO CONSOLE
-            // =================================
-
-            console.table(
-                Object.fromEntries(dados.entries())
+            console.log(
+                "FORMULÁRIO LOCALMENTE VÁLIDO!"
             );
 
 
-            // =================================
-            // MENSAGEM
-            // =================================
+            const dados = new FormData(
+                formulario
+            );
+
+
+            console.table(
+                Object.fromEntries(
+                    dados.entries()
+                )
+            );
+
 
             mensagem
                 .removeClass(
@@ -258,14 +445,11 @@ function validarFormulario() {
                 )
                 .addClass("alert-info");
 
+
             mensagem.text(
                 "Enviando dados do evento..."
             );
 
-
-            // =================================
-            // ENVIO PARA O CONTROLLER
-            // =================================
 
             try {
 
@@ -278,20 +462,21 @@ function validarFormulario() {
                 );
 
 
-                const resultado = await resposta.json();
+                const resultado =
+                    await resposta.json();
 
 
                 console.log(
-                    "Resposta do PHP:",
+                    "Resposta do Controller:",
                     resultado
                 );
 
 
                 // =================================
-                // ERRO
+                // CONTROLLER REJEITOU
                 // =================================
 
-                if (!resposta.ok) {
+                if (!resposta.ok || resultado.sucesso !== true) {
 
                     mensagem
                         .removeClass(
@@ -302,12 +487,16 @@ function validarFormulario() {
 
                     mensagem.text(
                         resultado.mensagem ||
-                        "Erro ao cadastrar evento."
+                        "Corrija os campos indicados."
                     );
 
 
-                    return;
+                    mostrarErrosController(
+                        resultado.erros
+                    );
 
+
+                    return false;
                 }
 
 
@@ -328,15 +517,13 @@ function validarFormulario() {
                 );
 
 
-                // =================================
-                // LIMPA FORMULÁRIO
-                // =================================
-
                 formulario.reset();
 
 
                 $(formulario)
-                    .find(".form-control, .form-select")
+                    .find(
+                        ".form-control, .form-select"
+                    )
                     .removeClass(
                         "is-valid is-invalid"
                     );
@@ -347,8 +534,10 @@ function validarFormulario() {
                     .text("")
                     .removeClass("d-block");
 
+            }
 
-            } catch (erro) {
+
+            catch (erro) {
 
                 console.error(
                     "Erro no fetch:",
@@ -381,7 +570,9 @@ function validarFormulario() {
     $("#formEvento").on("reset", function () {
 
         $(this)
-            .find(".form-control, .form-select")
+            .find(
+                ".form-control, .form-select"
+            )
             .removeClass(
                 "is-valid is-invalid"
             );
@@ -403,5 +594,58 @@ function validarFormulario() {
         mensagem.text("");
 
     });
+
+}
+
+
+// =========================================
+// ERROS DO CONTROLLER
+// =========================================
+
+function mostrarErrosController(erros) {
+
+    if (!erros) {
+        return;
+    }
+
+
+    $.each(
+        erros,
+        function (campo, mensagens) {
+
+            const elemento = $("#" + campo);
+
+
+            if (!elemento.length) {
+                return;
+            }
+
+
+            const container = elemento.closest(
+                ".col-md-4, .col-md-6, .col-12"
+            );
+
+
+            let mensagemErro = mensagens;
+
+
+            if (Array.isArray(mensagens)) {
+                mensagemErro = mensagens[0];
+            }
+
+
+            elemento
+                .removeClass("is-valid")
+                .addClass("is-invalid");
+
+
+            container
+                .find(".invalid-feedback")
+                .first()
+                .text(mensagemErro)
+                .addClass("d-block");
+
+        }
+    );
 
 }

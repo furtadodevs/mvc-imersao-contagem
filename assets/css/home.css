@@ -17,15 +17,18 @@
     padding-top: 45px;
     padding-bottom: 60px;
 }
-
+ 
 
 /* =========================================
-   CABEÇALHO
+   MENSAGEM DE BOAS-VINDAS
    ========================================= */
 
-.home-header {
+   .home-header {
+
     display: flex;
+
     align-items: center;
+
     gap: 20px;
 
     padding: 25px 30px;
@@ -33,18 +36,28 @@
     background: #ffffff;
 
     border-left: 5px solid #713bb0;
+
     border-radius: 12px;
 
-    box-shadow: 0 8px 25px rgba(68, 32, 100, 0.08);
+    box-shadow:
+        0 8px 25px rgba(68, 32, 100, 0.08);
 }
 
 
+/* =========================================
+   ÍCONE DA MENSAGEM
+   ========================================= */
+
 .header-icon {
+
     width: 60px;
+
     height: 60px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
@@ -66,24 +79,36 @@
 }
 
 
+/* =========================================
+   SAUDAÇÃO
+   ========================================= */
+
 .home-header h2 {
+
     margin: 0 0 6px;
 
-    font-size: 28px;
+    font-size: 26px;
+
     font-weight: 700;
 
     color: #2d1747;
 }
 
 
+/* =========================================
+   MENSAGEM
+   ========================================= */
+
 .home-header p {
+
     margin: 0;
 
     color: #766a82;
 
     font-size: 15px;
-}
 
+    line-height: 1.5;
+}
 
 /* =========================================
    CARDS
