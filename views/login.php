@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | Sistema de Cadastros</title>
+    <title>Login | Sistema de Eventos</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
@@ -156,7 +156,7 @@
                 <!-- Identificação -->
                 <p class="text-center text-muted small mt-4">
 
-                    Sistema MVC de Cadastros
+                    Sistema MVC de Eventos
 
                 </p>
 

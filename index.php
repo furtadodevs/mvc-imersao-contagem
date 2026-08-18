@@ -183,7 +183,7 @@
         <footer class="footer-sistema">
 
             <p>
-                Sistema de Cadastros
+                Sistema de Eventos
             </p>
 
         </footer>
