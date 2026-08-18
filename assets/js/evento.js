@@ -10,6 +10,10 @@ $(document).ready(function () {
 
     aplicarMascaras();
 
+    $("#formEvento").on("submit", function (event) {
+        event.preventDefault();
+    });
+
     validarFormulario();
  // =========================================
 // BOTÃO CANCELAR
@@ -211,6 +215,7 @@ function validarFormulario() {
 
 
     $("#formEvento").validate({
+        
 
         // =====================================
         // NÃO PERMITE ENVIO SE EXISTIREM ERROS
