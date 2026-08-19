@@ -509,18 +509,30 @@ unhighlight: function (element) {
                 // SUCESSO
                 // =================================
 
-                mensagem
-                    .removeClass(
-                        "alert-info alert-danger"
-                    )
-                    .addClass("alert-success");
+                const toastElemento = document.getElementById("toastSucesso");
 
+                const toastMensagem = $(toastElemento)
+                    .find(".toast-body");
 
-                mensagem.text(
+                toastMensagem.text(
                     resultado.mensagem ||
                     "Evento cadastrado com sucesso!"
                 );
 
+                const toast = new bootstrap.Toast(
+                    toastElemento,
+                    {
+                        autohide: true,
+                        delay: 4000
+                    }
+                );
+
+                toast.show();
+
+
+                // =================================
+                // LIMPA O FORMULÁRIO
+                // =================================
 
                 formulario.reset();
 
@@ -539,7 +551,20 @@ unhighlight: function (element) {
                     .text("")
                     .removeClass("d-block");
 
+                    
+                    // =================================
+                    // REDIRECIONA PARA HOME
+                    // =================================
+
+                    setTimeout(function () {
+
+                        window.location.href = "index.php?page=home";
+
+                    }, 3000);
+
             }
+
+            
 
 
             catch (erro) {
@@ -568,89 +593,89 @@ unhighlight: function (element) {
     });
 
 
-    // =========================================
-    // RESET
-    // =========================================
+                // =========================================
+                // RESET
+                // =========================================
 
-    $("#formEvento").on("reset", function () {
+                $("#formEvento").on("reset", function () {
 
-        $(this)
-            .find(
-                ".form-control, .form-select"
-            )
-            .removeClass(
-                "is-valid is-invalid"
-            );
-
-
-        $(this)
-            .find(".invalid-feedback")
-            .text("")
-            .removeClass("d-block");
+                    $(this)
+                        .find(
+                            ".form-control, .form-select"
+                        )
+                        .removeClass(
+                            "is-valid is-invalid"
+                        );
 
 
-        mensagem
-            .removeClass(
-                "alert-info alert-danger alert-success"
-            )
-            .addClass("d-none");
+                    $(this)
+                        .find(".invalid-feedback")
+                        .text("")
+                        .removeClass("d-block");
 
 
-        mensagem.text("");
-
-    });
-
-}
-
-
-// =========================================
-// ERROS DO CONTROLLER
-// =========================================
-
-function mostrarErrosController(erros) {
-
-    if (!erros) {
-        return;
-    }
+                    mensagem
+                        .removeClass(
+                            "alert-info alert-danger alert-success"
+                        )
+                        .addClass("d-none");
 
 
-    $.each(
-        erros,
-        function (campo, mensagens) {
+                    mensagem.text("");
 
-            const elemento = $("#" + campo);
+                });
 
-
-            if (!elemento.length) {
-                return;
             }
 
 
-            const container = elemento.closest(
-                ".col-md-4, .col-md-6, .col-12"
-            );
+            // =========================================
+            // ERROS DO CONTROLLER
+            // =========================================
+
+            function mostrarErrosController(erros) {
+
+                if (!erros) {
+                    return;
+                }
 
 
-            let mensagemErro = mensagens;
+                $.each(
+                    erros,
+                    function (campo, mensagens) {
+
+                        const elemento = $("#" + campo);
 
 
-            if (Array.isArray(mensagens)) {
-                mensagemErro = mensagens[0];
+                        if (!elemento.length) {
+                            return;
+                        }
+
+
+                        const container = elemento.closest(
+                            ".col-md-4, .col-md-6, .col-12"
+                        );
+
+
+                        let mensagemErro = mensagens;
+
+
+                        if (Array.isArray(mensagens)) {
+                            mensagemErro = mensagens[0];
+                        }
+
+
+                        elemento
+                            .removeClass("is-valid")
+                            .addClass("is-invalid");
+
+
+                        container
+                            .find(".invalid-feedback")
+                            .first()
+                            .text(mensagemErro)
+                            .addClass("d-block");
+
+                    }
+                );
+
             }
-
-
-            elemento
-                .removeClass("is-valid")
-                .addClass("is-invalid");
-
-
-            container
-                .find(".invalid-feedback")
-                .first()
-                .text(mensagemErro)
-                .addClass("d-block");
-
-        }
-    );
-
-}

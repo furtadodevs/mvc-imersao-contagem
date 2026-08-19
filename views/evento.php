@@ -452,6 +452,44 @@
 
         </form>
 
+        <!-- =========================================
+     TOAST - MENSAGEM DE SUCESSO
+     ========================================= -->
+
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+
+            <div
+                id="toastSucesso"
+                class="toast"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true">
+
+                <div class="toast-header">
+
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                    <strong class="me-auto">
+                        Sucesso!
+                    </strong>
+
+                    <small>Agora</small>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="toast"
+                        aria-label="Fechar"></button>
+
+                </div>
+
+                <div class="toast-body">
+                    Evento cadastrado com sucesso!
+                </div>
+
+            </div>
+
+        </div>
 
         <!-- =========================================
              MENSAGEM
