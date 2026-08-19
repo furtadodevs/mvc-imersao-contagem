@@ -11,7 +11,7 @@ header("Content-Type: application/json; charset=utf-8");
 // CARREGA O VALIDATOR
 // =========================================
 
-require __DIR__ . "/../libs/Validator.php";
+require __DIR__ . "/../libs/php/Validator.php";
 
 
 // =========================================
